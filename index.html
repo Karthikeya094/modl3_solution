@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="NarrowItDownApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div ng-controller="NarrowItDownController as ctrl">
+        <h1>Menu Item Search</h1>
+
+        <!-- Search Box and Button -->
+        <input type="text" ng-model="ctrl.searchTerm" placeholder="Search menu items">
+        <button ng-click="ctrl.narrowItDown()">Narrow It Down For Me!</button>
+
+        <!-- List of Found Items -->
+        <ul>
+            <found-items found="ctrl.foundItems" on-remove="ctrl.removeItem(index)"></found-items>
+        </ul>
+
+        <!-- Message for Empty Results -->
+        <p ng-if="ctrl.foundItems.length === 0 && ctrl.searchTerm.length > 0">Nothing found</p>
+    </div>
+
+    <!-- Include AngularJS script here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- Link to your app.js -->
+    <script src="app.js"></script>
+</body>
+</html>
